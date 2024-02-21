@@ -4,13 +4,26 @@ import { useState, useEffect } from 'react'
 function App() {
   //useState añade estado a los componentes
   const [enabled, setEnabled] = useState(false)
+  const [position, setPosition] = useState({x: 0 , y: 0})
 
   //useEffect permite realizar efectos secundarios
   useEffect(() => {
-    console.log("Prueba xd")
-  })
+    console.log('effect ', {enabled})
 
-  
+    const handleMove = (event) => {
+      const {clientX, clientY} = event
+      console.log('handleMove', {clientX, clientY})  
+
+      setPosition({x:clientX, y:clientY})
+    }
+    // Si enabled es true mueve el puntero
+    if(enabled){
+      window.addEventListener('pointermove', handleMove )          
+    }
+    return() =>{
+      window.removeEventListener('pointermove', handleMove )
+    }
+  }, [enabled])
 
   return (
     <main>
@@ -24,7 +37,7 @@ function App() {
         top: -20,
         width: 40,
         height: 40,
-        transform: 'translate(0px, 0px)'
+        transform: `translate(${position.x}px, ${position.y}px)`
       }}
       />
     
