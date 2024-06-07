@@ -1,13 +1,12 @@
-
 import './App.css'
-import resultMovie from './api-json/result-true.json'
-import resultOutMovie from './api-json/result-false.json'
 import {Movies} from './components/movies.jsx'
+import {useMovies} from './hooks/useMovie.js'
 
 function App() {
-  const noMovie = resultOutMovie
-  const movies = resultMovie.Search
+  // const noMovie = resultOutMovie
 
+  //Desentructuracion para obtener la movies mapeadas
+  const {movies: mappedMovies} = useMovies()
 
   return (
     <div className='cabezera'>
@@ -19,7 +18,7 @@ function App() {
       </form>
       </header>
       <main>
-        <Movies movies={movies}/>
+        <Movies movies={mappedMovies}/>
       </main>
     </div>
 
