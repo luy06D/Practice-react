@@ -1,34 +1,7 @@
-import { useEffect, useState } from 'react'
 import {Movies} from './components/movies.jsx'
 import {useMovies} from './hooks/useMovie.js'
+import { useSearch } from './hooks/useSearch.js'
 import './App.css'
-
-  //Custom hooks validación del input(search)
-  function useSearch(){
-    const [search, setSearch] = useState('')
-    const [error , setError] = useState(null)
-    
-  // useEffect para manejar condiones del input
-  useEffect(() => {
-
-    if(search === ''){
-      setError('Ingrese el nombre de una pelicula')
-      return
-    }
-
-    if(search.length < 3){
-      setError('Ingrese minimo 4 caracteres')
-      return
-    }
-
-    setError(null)
-
-  }, [search])
-
-  return {search, setSearch, error}
-
-
-  }
 
 
 function App() {
@@ -43,8 +16,6 @@ function App() {
 
   // Evento change para actualizar el estado (error)
   const handleChange = (event) =>{
-    const newQuery = event.target.value
-    if(newQuery.stardsWith(' ')) return
     setSearch(event.target.value)
   }
 

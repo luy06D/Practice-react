@@ -15,3 +15,4 @@ export function useMovies(){
     return {movies: mappedMovies}
 
 }
+
