@@ -1,5 +1,5 @@
 
-// Separarmos los componenetes 
+// Separarmos los componentes 
 
 //Componente que renderiza la lista de movies
 function ListMovies ({movies}){
