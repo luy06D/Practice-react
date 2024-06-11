@@ -6,17 +6,19 @@ import './App.css'
 
 function App() {
   //Desentructuracion para obtener la movies mapeadas
-  const {movies: mappedMovies} = useMovies()
   const {search, setSearch, error} = useSearch()
+  const {movies: mappedMovies, getMovies} = useMovies({search})
   
 
   const handleSubmit = (event) =>{
     event.preventDefault()
+    getMovies() // TAMBIEN PODEMOS UTILIZARLO EN EL handleChange
   }
 
   // Evento change para actualizar el estado (error)
   const handleChange = (event) =>{
     setSearch(event.target.value)
+
   }
 
 
