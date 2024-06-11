@@ -18,8 +18,8 @@
       return
     }
 
-    if(search.length < 4){
-      setError('Ingrese minimo 4 caracteres')
+    if(search.length < 3){
+      setError('Ingrese minimo 3 caracteres')
       return
     }
 

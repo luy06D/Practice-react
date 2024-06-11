@@ -9,6 +9,7 @@ function App() {
   const {search, setSearch, error} = useSearch()
   const {movies: mappedMovies, getMovies} = useMovies({search})
   
+  console.log("render")
 
   const handleSubmit = (event) =>{
     event.preventDefault()
@@ -17,7 +18,8 @@ function App() {
 
   // Evento change para actualizar el estado (error)
   const handleChange = (event) =>{
-    setSearch(event.target.value)
+    setSearch(event.target.value) 
+    // getMovies()
 
   }
 

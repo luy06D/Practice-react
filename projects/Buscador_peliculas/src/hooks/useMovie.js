@@ -5,16 +5,22 @@ import { useState } from 'react'
 
 export function useMovies({search}){
     const [responseMovies, setResponseMovies] = useState([])
+    const [previusovies, setPreviusMovies] = useState('')
 
     const movies = responseMovies.Search
 
     const getMovies = () =>{
       if(search){
+        if(search === previusovies){
+          alert("ya realizo la busqueda")
+          return
+        }
 
         fetch(`https://www.omdbapi.com/?apikey=b0584a99&s=${search}`)
           .then(response => response.json())
           .then(data => {
             setResponseMovies(data)
+            setPreviusMovies(search) // Captura la busqueda
           })
        
       }else{
