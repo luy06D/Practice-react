@@ -7,13 +7,14 @@ import './App.css'
 function App() {
   //Desentructuracion para obtener la movies mapeadas
   const {search, setSearch, error} = useSearch()
-  const {movies: mappedMovies, getMovies} = useMovies({search})
+  const {responseMovies, getMovies} = useMovies({search})
   
   console.log("render")
 
   const handleSubmit = (event) =>{
     event.preventDefault()
-    getMovies() // TAMBIEN PODEMOS UTILIZARLO EN EL handleChange
+    //Consulta ala API
+    getMovies() 
   }
 
   // Evento change para actualizar el estado (error)
@@ -35,7 +36,7 @@ function App() {
       {error &&  <p style={{color: 'red'}}>{error}</p>}
       </header>
       <main>
-        <Movies movies={mappedMovies}/>
+        <Movies movies={responseMovies}/>
       </main>
     </div>
 
