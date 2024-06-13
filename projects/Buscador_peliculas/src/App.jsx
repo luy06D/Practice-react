@@ -9,9 +9,9 @@ function App() {
   const [sort , setSort] = useState(false)
   //Desentructuracion para obtener la movies mapeadas
   const {search, setSearch, error} = useSearch()
-  const {responseMovies, getMovies} = useMovies({search, sort})
+  const {responseMovies , getMovies} = useMovies({search, sort})
   
-  console.log("render")
+  console.log(responseMovies)
 
   const handleSubmit = (event) =>{
     event.preventDefault()

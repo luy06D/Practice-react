@@ -9,6 +9,7 @@ export const searchMovies = async ({search}) =>{
         const data = await response.json()
     
             const movies = data.Search
+
       
             //Mapeamos las movies en una constante
             return movies?.map(movie =>({

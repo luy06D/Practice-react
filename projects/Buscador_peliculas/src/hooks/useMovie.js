@@ -14,18 +14,18 @@ export function useMovies({search, sort}){
 
       previusMovies.current = search
       const newMovies = await searchMovies({search})
-      console.log(newMovies)
+      
       setResponseMovies(newMovies)
 
 
     }, [])
 
     const sortedMovies = useMemo(() =>{
-      sort ? [...responseMovies].sort((a, b) => a.title.localeCompare(b.title))
+      return sort ? [...responseMovies].sort((a, b) => a.title.localeCompare(b.title))
       : responseMovies
-    }, [sort, responseMovies])
-
-    return {responseMovies: sortedMovies, getMovies}
+      }, [sort, responseMovies])
+      
+    return { responseMovies:  sortedMovies, getMovies}
 
 }
 
