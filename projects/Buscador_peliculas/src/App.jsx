@@ -48,7 +48,7 @@ function App() {
         <label htmlFor="" style={{padding: '10px'}}>Ordenar por titulo</label>
         <input type='checkbox' onChange={handleSort} checked={sort} />
       </form>
-      {error &&  <p style={{color: 'red'}}>{error}</p>}
+      {error &&  <p style={{color: '#CD6155'}}>{error}</p>}
       </header>
       <main>
         <Movies movies={responseMovies}/>
