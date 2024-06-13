@@ -2,12 +2,14 @@ import {Movies} from './components/movies.jsx'
 import {useMovies} from './hooks/useMovie.js'
 import { useSearch } from './hooks/useSearch.js'
 import './App.css'
+import { useState } from 'react'
 
 
 function App() {
+  const [sort , setSort] = useState(false)
   //Desentructuracion para obtener la movies mapeadas
   const {search, setSearch, error} = useSearch()
-  const {responseMovies, getMovies} = useMovies({search})
+  const {responseMovies, getMovies} = useMovies({search, sort})
   
   console.log("render")
 
@@ -15,6 +17,10 @@ function App() {
     event.preventDefault()
     //Consulta ala API
     getMovies() 
+  }
+
+  const handleSort = () =>{
+    setSort(!sort)
   }
 
   // Evento change para actualizar el estado (error)
@@ -32,6 +38,8 @@ function App() {
       <form action="" className='form' onSubmit={handleSubmit}>
         <input onChange={handleChange} type="text" value={search} placeholder='Ingresar pelicula...' />
         <button type='submit' >Buscar</button>
+        <label htmlFor="" style={{padding: '10px'}}>Ordenar por titulo</label>
+        <input type='checkbox' onChange={handleSort} checked={sort} />
       </form>
       {error &&  <p style={{color: 'red'}}>{error}</p>}
       </header>

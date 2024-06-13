@@ -1,25 +1,29 @@
 //Custom Hooks
 import { useState, useRef } from 'react'
 import { searchMovies } from '../service/movies'
+import { Movies } from '../components/movies'
 
-export function useMovies({search}){
+export function useMovies({search, sort}){
     const [responseMovies, setResponseMovies] = useState([])
-    const previusovies = useRef('')
+    const previusMovies = useRef('')
    
     const getMovies = async () =>{
 
       //evitar que se haga la misma busqueda dos veces seguidas
-      if(previusovies.current === search){
-        return
-      } 
+      if(previusMovies.current === search) return
+
+      previusMovies.current = search
       const newMovies = await searchMovies({search})
-      previusovies.current = search
       setResponseMovies(newMovies)
 
 
     }
 
-    return {responseMovies, getMovies}
+    const sortedMovies = 
+    sort ? [...responseMovies].sort((a, b) => a.title.localeCompare(b.title))
+    : responseMovies
+
+    return {responseMovies: sortedMovies, getMovies}
 
 }
 
