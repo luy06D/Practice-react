@@ -16,7 +16,7 @@ function App() {
   const handleSubmit = (event) =>{
     event.preventDefault()
     //Consulta ala API
-    getMovies() 
+    getMovies({search}) 
   }
 
   const handleSort = () =>{
