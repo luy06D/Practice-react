@@ -12,6 +12,7 @@ function App() {
   //Desentructuracion para obtener la movies mapeadas
   const {search, setSearch, error} = useSearch()
   const {responseMovies , getMovies} = useMovies({search, sort})
+
   
   const debounceGetMovies = useCallback(
     debounce(search => {
